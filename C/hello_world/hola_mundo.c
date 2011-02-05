@@ -1,6 +1,6 @@
 #include <gtk/gtk.h>
 
-   /* Esta es una función de llamada hacia atras (callback).
+   /* Esta es una función callback.
     * Los argumentos son ignorados en este ejemplo.
     */    
     void hello(GtkWidget *widget, gpointer data)
