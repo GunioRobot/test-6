@@ -17,7 +17,7 @@ GtkWidget *make_box( gboolean homogeneous,
                      gint     spacing,
                      gboolean expand,
                      gboolean fill,
-                     gboolean paddint )
+                     gboolean padding )
 {
 	GtkWidget *box;
 	GtkWidget *button;
@@ -55,7 +55,7 @@ GtkWidget *make_box( gboolean homogeneous,
 	gtk_box_pack_start (GTK_BOX(box), button, expand, fill, padding);
 	gtk_widget_show (button);
 
-	sprintf(paddstr, "%d;",padding);
+	sprintf(padstr, "%d;",padding);
 
 	button = gtk_button_new_with_label (padstr);
 	gtk_box_pack_start (GTK_BOX(box), button, expand, fill, padding);
@@ -103,10 +103,10 @@ int main( int   argc,
 	box1 = gtk_vbox_new(FALSE, 0);
 
 	/* wich example to show. These correspond to the pictures above.*/
-	switch(wich){
+	switch(which){
 		case 1:
 			/* Crea un nuevo label */
-			label = gtk_lavel_new("gtk_hbox_new(FALSE,0);");
+			label = gtk_label_new("gtk_hbox_new(FALSE,0);");
 
 			/* Alineamos el label al lado izquierdo.*/
 			gtk_misc_set_alignment (GTK_MISC(label), 0,0);
