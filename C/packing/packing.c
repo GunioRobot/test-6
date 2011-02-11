@@ -252,6 +252,34 @@ int main( int   argc,
 	/* Nuestro boton salir */
 	button = gtk_button_new_with_label ("Salir");
 
-	/**/
-			
+	/* Configuramos la señal para terminar el programa cuando el boton se haya presionado */
+	g_signal_connect_swapped (G_OBJECT(button), "clicked", 
+							  G_CALLBACK(gtk_main_quit),
+							  G_OBJECT(window));
+							  
+	/* Empaquetamos el boton en la caja quitbox 
+	 * los ultimos 3 argumentos para gtk_box_pack_start son:
+	 * expand, fill, padding. */
+	gtk_box_pack_start( GTK_BOX (quitbox), button, TRUE, FALSE, 0);
+	/* Empaquetamos el quitbox dentro de la caja vbox (box1)*/
+	gtk_box_pack_start( GTK_BOX(box1), quitbox, FALSE, FALSE, 0);
+	
+	/* Empaquetar la vbox(box1) la cual contiene todos nuestros widgets, dentro de la
+	 * ventana principal. */
+	gtk_container_add(GTK_CONTAINER(window), box1);
+	
+	/* Y mostramos todo lo que falte */
+	gtk_widget_show(button);
+	gtk_widget_show(quitbox);
+	
+	gtk_widget_show(box1);
+	/* Mostrando la ventana hasta el último para que todo aparezca al mismo tiempo.*/
+	gtk_widget_show(window);
+	
+	/* Y por supuesto, nuestra funcion main */
+	gtk_main();
+	
+	/* Regresamos el control aquí cuando gtk_main_quit() sea llamada, pero no cuando 
+	 * exit() sea usada.*/
+	return 0;
 }
